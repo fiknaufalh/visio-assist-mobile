@@ -46,9 +46,9 @@ module.exports = {
         jos_thinitalic: ["JosefinSans-ThinItalic", "sans-serif"],
       },
       colors: {
-        "primary-1": "#31013F",
-        "primary-2": "#690895",
-        "primary-3": "#BA7DB0",
+        "primary-1": "#063b6d",
+        "primary-2": "#063b6d",
+        "primary-3": "#063b6d",
         "secondary-1": "#F9D264",
         "secondary-2": "#E9A400",
         "secondary-3": "#601C0E",

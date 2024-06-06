@@ -19,7 +19,7 @@ export default function App() {
   if (!rootNavigationState?.key) return null;
 
   StatusBar.setBarStyle("light-content", true);
-  StatusBar.setBackgroundColor(COLORS.primary_2);
+  StatusBar.setBackgroundColor("#063b6d");
 
   if (!showHomePage) {
     return <IntroSlider setShowHomePage={setShowHomePage} />;

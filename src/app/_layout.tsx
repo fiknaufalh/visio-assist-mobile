@@ -69,7 +69,7 @@ const MainLayout = () => {
     // setTimeout(() => {
     if (isLoggedIn && !inApp) {
       // redirect to home
-      router.replace("home");
+      router.replace("loadingScreen");
     } else if (!isLoggedIn) {
       // redirect to login
       router.replace("login");
