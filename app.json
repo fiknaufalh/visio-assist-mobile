@@ -17,7 +17,7 @@
         "foregroundImage": "./src/assets/walking-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.fiknaufalh.guestify"
+      "package": "com.fiknaufalh.visioassist"
     },
     "web": {
       "output": "static",
@@ -32,8 +32,8 @@
         }
       ]
     ],
-    "name": "guestify-app",
-    "slug": "guestify-app",
+    "name": "Visio Assist",
+    "slug": "VisioAssist-app",
     "experiments": {
       "typedRoutes": true
     },
