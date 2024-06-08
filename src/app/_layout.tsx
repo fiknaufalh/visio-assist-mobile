@@ -2,7 +2,7 @@ import "../global.css";
 import { Slot, SplashScreen, useRouter, useSegments, useRootNavigationState } from "expo-router";
 import React, { useEffect } from "react";
 import { useFonts } from "expo-font";
-import { AuthContextProvider, useAuth } from "@/contexts/authContext";
+import { router } from "expo-router";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -25,7 +25,6 @@ const MainLayout = () => {
     "NunitoSans-Bold": require("../assets/fonts/NunitoSans/NunitoSans_7pt-Bold.ttf"),
     "NunitoSans-BoldItalic": require("../assets/fonts/NunitoSans/NunitoSans_7pt-BoldItalic.ttf"),
     "NunitoSans-ExtraBold": require("../assets/fonts/NunitoSans/NunitoSans_7pt-ExtraBold.ttf"),
-
     "NunitoSans-ExtraBoldItalic": require("../assets/fonts/NunitoSans/NunitoSans_7pt-ExtraBoldItalic.ttf"),
     "NunitoSans-ExtraLight": require("../assets/fonts/NunitoSans/NunitoSans_7pt-ExtraLight.ttf"),
     "NunitoSans-ExtraLightItalic": require("../assets/fonts/NunitoSans/NunitoSans_7pt-ExtraLightItalic.ttf"),
@@ -55,32 +54,12 @@ const MainLayout = () => {
     "JosefinSans-ThinItalic": require("../assets/fonts/JosefinSans/JosefinSans-ThinItalic.ttf"),
   });
 
-  const { isLoggedIn, user } = useAuth();
-  const segments = useSegments();
-  const router = useRouter();
-  const navigationState = useRootNavigationState();
-
-  useEffect(() => {
-    if (!navigationState?.key) return;
-    if (typeof isLoggedIn === "undefined") return;
-    const inApp = segments[0] == "(tabs)";
-    console.log("user: ", user, ", isLoggedIn: ", isLoggedIn, ", inApp: ", inApp);
-
-    // setTimeout(() => {
-    if (isLoggedIn && !inApp) {
-      // redirect to home
-      router.replace("loadingScreen");
-    } else if (!isLoggedIn) {
-      // redirect to login
-      router.replace("login");
-    }
-    // }, 1000);
-
-  }, [isLoggedIn]);
-
   useEffect(() => {
     if (error) throw error;
-    if (fontsLoaded) SplashScreen.hideAsync();
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+      router.replace("loadingScreen"); // Move the navigation here
+    }
   }, [fontsLoaded, error]);
 
   if (!fontsLoaded && !error) return null;
@@ -89,9 +68,5 @@ const MainLayout = () => {
 }
 
 export default function RootLayout() {
-  return (
-    <AuthContextProvider>
-      <MainLayout />
-    </AuthContextProvider>
-  );
+  return <MainLayout />;
 }

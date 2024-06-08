@@ -2,12 +2,7 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert, Image, Pres
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import * as Progress from 'react-native-progress';
-import { ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { COLORS } from '@/constants/theme';
-import { Octicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { useAuth } from '@/contexts/authContext';
 
 export default function loadingScreen() {
 
@@ -17,12 +12,12 @@ export default function loadingScreen() {
     router.replace("home")
   }, 5000);
 
-    return (
-      <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <StatusBar style="light" />
       <Text style={styles.title}>VisioAssist</Text>
       <Image
-        source={require('@/assets/walking-icon.png')}
+        source={require('@/assets/loading-icon.png')}
         style={{ width: 100, height: 100, marginBottom: 80 }}
       />
       <View style={styles.progressContainer}>
@@ -41,27 +36,27 @@ export default function loadingScreen() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#001F3F',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    title: {
-      color: 'white',
-      fontSize: 32,
-      fontWeight: 'bold',
-      marginBottom: 80,
-    },
-    iconContainer: {
-      marginBottom: 60,
-    },
-    icon: {
-      width: 100,
-      height: 100,
-      tintColor: 'white',
-    },
-    progressContainer: {
-      alignItems: 'center',
-    },
-  });
+  container: {
+    flex: 1,
+    backgroundColor: '#001F3F',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    color: 'white',
+    fontSize: 32,
+    fontWeight: 'bold',
+    marginBottom: 80,
+  },
+  iconContainer: {
+    marginBottom: 60,
+  },
+  icon: {
+    width: 100,
+    height: 100,
+    tintColor: 'white',
+  },
+  progressContainer: {
+    alignItems: 'center',
+  },
+});
